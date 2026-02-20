@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+/* KC Overseas - Design tokens (Figma) */
+@theme {
+  /* Hero & primary */
+  --color-hero-bg: #6C48F0;
+  --color-primary-purple: #6C48F0;
+  --color-primary-purple-light: #7C5CF2;
+
+  /* CTA - orange (replaces #FF6A56) */
+  --color-cta: #FDAF4D;
+  --color-cta-hover: #FDBF6D;
+
+  /* Legacy/other sections */
+  --color-accent-orange: #FDAF4D;
+  --color-accent-orange-red: #FF6A56;
+  --color-neutral-dark-blue: #1E3A8A;
+  --color-neutral-peach: #FED7AA;
+  --color-neutral-pink: #FCE7F3;
+  --color-neutral-purple-bg: #F3E8FF;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    @apply text-gray-800 antialiased;
+  }
+}
