@@ -15,32 +15,24 @@
    Wrapper to contain the large ellipse overshoot WITHOUT 
    restricting the decorative streaks or other floating elements.
 */
-.footer-arc-bg {
+.footer-bg-svg {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
   z-index: 0;
   pointer-events: none;
 }
 
-/* 
-   The CSS-based Convex Arc (Dome) 
-   Using exact Figma dimensions: 2660px x 660px ellipse.
-*/
-.footer-arc-bg::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 2660px; /* Exact Figma width */
-  height: 660px; /* Exact Figma height */
-  background: #0E1B2C;
-  border-radius: 50%; /* Perfect ellipse */
-  z-index: 1;
+.footer-svg-desktop {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.footer-svg-mobile {
+  display: none;
 }
 
 .footer-streak {
@@ -142,6 +134,14 @@
   .footer-content {
     padding: 80px 24px 40px;
   }
+  .footer-svg-desktop {
+    display: none;
+  }
+  .footer-svg-mobile {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
   .footer-title {
     font-size: 28px;
     margin-bottom: 20px;
@@ -165,7 +165,7 @@
   .footer-streak {
     display: block;
     left: 20px;
-    top: -30px;
+    top: -20px;
     transform: scale(0.5);
     transform-origin: left top;
   }

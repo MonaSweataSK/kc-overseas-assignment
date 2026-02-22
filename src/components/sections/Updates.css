@@ -197,7 +197,7 @@
   }
 
   .update-card {
-    width: calc(100vw - 40px);
+    width: 90%;
     flex-shrink: 0;
     scroll-snap-align: center;
     height: auto;
@@ -205,7 +205,7 @@
   }
   
   .update-hiring {
-    width: calc(100vw - 40px);
+    width: 90%;
   }
 
   .hiring-title {
