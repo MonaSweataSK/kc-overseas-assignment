@@ -4,8 +4,19 @@ import './Hero.css';
 
 export function Hero() {
   return (
-    <>
+    <div className="hero-container">
       <section className="hero-section">
+        <div className="hero-bg-svg">
+          {/* Desktop SVG background */}
+          <svg className="hero-svg-desktop" viewBox="0 0 1920 650" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0 0H1920V548.975C1170.28 685.039 749.965 682.304 0 548.975L0 0Z" fill="#6C48F0"/>
+          </svg>
+          {/* Mobile SVG background */}
+          <svg className="hero-svg-mobile" viewBox="0 0 375 669" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M-113 0H487V568.24C351.076 703.792 20.5 701.375 -113 568.24L-113 0Z" fill="#6C48F0"/>
+          </svg>
+        </div>
+
         {/* Star pattern overlay */}
         <div className="hero-stars" aria-hidden="true">
           <img src="/assets/logos/stars.svg" alt="" className="hero-stars-svg" />
@@ -32,7 +43,6 @@ export function Hero() {
           </div>
         </div>
       </section>
-      <div className="hero-curve-bottom" aria-hidden="true" />
-    </>
+    </div>
   );
 }
