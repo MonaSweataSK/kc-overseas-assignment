@@ -180,6 +180,35 @@
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
-  .updates-grid { grid-template-columns: 1fr; }
-  .update-hiring { min-height: 220px; }
+  .updates-grid { 
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    margin: 0 -20px;
+    padding: 0 20px 20px;
+    grid-template-columns: none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .updates-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .update-card {
+    width: calc(100vw - 40px);
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    height: auto;
+    min-height: 400px;
+  }
+  
+  .update-hiring {
+    width: calc(100vw - 40px);
+  }
+
+  .hiring-title {
+    font-size: 22px;
+  }
 }

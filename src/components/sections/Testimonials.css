@@ -130,13 +130,31 @@
 }
 
 /* ── Responsive ── */
-@media (max-width: 900px) {
-  .testi-cards-wrap {
-    grid-template-columns: repeat(2, 1fr);
+@media (max-width: 768px) {
+  .testimonials-title {
+    font-size: 28px;
+    margin-top: 40px;
+    margin-bottom: 32px;
   }
-}
-@media (max-width: 600px) {
   .testi-cards-wrap {
     grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .testi-card:nth-child(2) {
+    margin-top: 0;
+  }
+  .testi-card {
+    padding: 24px;
+  }
+  .testimonials-carousel {
+    gap: 8px;
+  }
+  .testi-arrow {
+    width: 36px;
+    height: 36px;
+  }
+  .testi-dots {
+    margin-top: 32px;
+    margin-bottom: 40px;
   }
 }

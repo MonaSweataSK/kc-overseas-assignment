@@ -1,4 +1,39 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@font-face {
+  font-family: 'Buenos Aires';
+  src: url('/assets/fonts/AOKBuenosAiresRegular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Buenos Aires';
+  src: url('/assets/fonts/AOKBuenosAiresRegularItalic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Buenos Aires';
+  src: url('/assets/fonts/AOKBuenosAiresSemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Buenos Aires';
+  src: url('/assets/fonts/AOKBuenosAiresSemiBoldItalic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Buenos Aires';
+  src: url('/assets/fonts/AOKBuenosAiresBold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Buenos Aires';
+  src: url('/assets/fonts/AOKBuenosAiresBoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -27,7 +62,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Buenos Aires', 'Inter', system-ui, -apple-system, sans-serif;
   color: var(--text-dark);
   background: #fff;
   line-height: 1.6;
@@ -132,13 +167,13 @@ button {
 }
 
 /* ========== SCROLLBAR ========== */
+/* Hide scrollbar for Chrome, Safari and Opera */
 ::-webkit-scrollbar {
-  width: 6px;
+  display: none;
 }
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-::-webkit-scrollbar-thumb {
-  background: var(--purple-hero);
-  border-radius: 3px;
+
+/* Hide scrollbar for IE, Edge and Firefox */
+html, body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }

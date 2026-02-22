@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Button } from '../ui/Button';
 import './Footer.css';
 
 export function Footer() {
@@ -24,8 +25,6 @@ export function Footer() {
       <div className="footer-streak">
         <img src="/assets/streaks.svg" alt="" aria-hidden="true" />
       </div>
-
-
 
       <div className="container footer-content">
         <h2 className="footer-title">Stay updated with KC Overseas</h2>
@@ -61,9 +60,9 @@ export function Footer() {
               <img src="/assets/logos/chevron-down.svg" alt="" className="select-chevron" aria-hidden="true" />
             </div>
           </div>
-          <button type="submit" className="footer-subscribe-btn">
+          <Button type="submit">
             {submitted ? '✓ Subscribed!' : 'Subscribe Now'}
-          </button>
+          </Button>
         </form>
       </div>
     </footer>

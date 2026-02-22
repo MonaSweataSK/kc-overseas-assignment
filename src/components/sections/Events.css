@@ -1,5 +1,5 @@
 .events-section {
-  padding: 72px 0;
+  padding: 46px 0;
   background: white;
 }
 
@@ -154,7 +154,56 @@
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
-  .events-grid { grid-template-columns: 1fr; }
-  .event-card-small { flex-direction: column; }
-  .event-small-image-wrap { width: 100%; height: 160px; }
+  .container {
+    padding: 0 20px;
+  }
+  .events-grid { 
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    margin: 0 -20px; /* Bleed to edges */
+    padding: 0 20px 20px;
+    grid-template-columns: none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .events-grid::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Make both the featured card and the small cards direct siblings in the flex grid */
+  .events-right-col {
+    display: contents;
+  }
+
+  .event-card {
+    width: calc(100vw - 40px);
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 480px; /* Consistent height for all cards */
+  }
+
+  .event-card-featured, .event-card-small {
+    width: calc(100vw - 40px);
+    height: 480px;
+  }
+
+  .event-featured-image-wrap, .event-small-image-wrap {
+    height: 240px;
+    width: 100%;
+    flex: none;
+  }
+
+  .event-body {
+    flex: 1;
+    padding: 24px 20px;
+  }
+
+  .event-card-small {
+    flex-direction: column;
+  }
 }

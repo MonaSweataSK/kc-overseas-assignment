@@ -1,4 +1,5 @@
 import { services } from '../../data/content';
+import { Button } from '../ui/Button';
 import './Services.css';
 
 export function Services() {
@@ -17,7 +18,7 @@ export function Services() {
           ))}
         </div>
         <div className="services-cta">
-          <a href="#" className="btn-explore">Enquire Now</a>
+          <Button onClick={() => window.location.href = '#'}>Enquire Now</Button>
         </div>
       </div>
     </section>

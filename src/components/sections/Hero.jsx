@@ -1,3 +1,4 @@
+import { Button } from '../ui/Button';
 import './Hero.css';
 
 
@@ -19,7 +20,7 @@ export function Hero() {
             and aspirations in eminent universities globally and we welcome you to pursue yours!
           </p>
           <div className="hero-actions">
-            <a href="#" className="hero-btn-enquire">Enquire Now</a>
+            <Button onClick={() => window.location.href = '#'}>Enquire Now</Button>
             <a href="#" className="hero-btn-address">
               <span className="address-circle">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">

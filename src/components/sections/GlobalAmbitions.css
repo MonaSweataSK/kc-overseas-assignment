@@ -86,6 +86,27 @@
   .ambitions-inner {
     grid-template-columns: 1fr;
     gap: 36px;
+    text-align: center;
   }
-  .ambitions-image-wrap { order: -1; }
+  .ambitions-image-wrap { 
+    order: -1; 
+    padding: 0;
+    margin: 0 auto;
+  }
+  .ambitions-image-bg {
+    display: none; /* remove yellow background on mobile */
+  }
+  .ambitions-image {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+  }
+  .ambitions-list {
+    align-items: center;
+  }
+  .ambitions-item {
+    text-align: left;
+    width: 100%;
+    max-width: 400px;
+  }
 }

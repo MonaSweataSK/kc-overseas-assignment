@@ -10,6 +10,12 @@
   font-size: 26px;
 }
 
+.hidden {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
 /* ── Number row ─────────────────────────────────── */
 /*
   3-card row total = 3×440 + 2×20 = 1360px
@@ -27,11 +33,23 @@
   margin: 0 auto 20px;
 }
 
-.steps-dotted-line {
+.steps-line-left {
   position: absolute;
   top: 50%;
-  left: calc(50% - 434px);   /* right edge of prev circle (centre -460 + radius 26) */
-  right: calc(50% - 434px);  /* left edge of next circle  (centre +460 - radius 26) */
+  left: calc(50% - 434px);   /* start of prev circle */
+  right: 50%;                /* middle of active */
+  margin-right: 26px;        /* gap at active circle edge */
+  border-top: 2px dotted #bbb;
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+.steps-line-right {
+  position: absolute;
+  top: 50%;
+  left: 50%;                 /* middle of active */
+  right: calc(50% - 434px);  /* end of next circle */
+  margin-left: 26px;         /* gap at active circle edge */
   border-top: 2px dotted #bbb;
   transform: translateY(-50%);
   z-index: 0;
@@ -203,10 +221,38 @@
 .steps-nav-btn:hover { opacity: 0.75; }
 
 /* ── Responsive ──────────────────────────────────── */
-@media (max-width: 780px) {
-  .steps-cards-outer { max-width: 100%; }
-  .steps-number-row { max-width: 100%; padding: 0 16px; }
-  .step-num-prev { left: 16px; }
-  .step-num-next { right: 16px; }
-  .steps-dotted-line { left: 42px; right: 42px; }
+@media (max-width: 768px) {
+  .steps-cards-outer { 
+    max-width: 100%; 
+    mask-image: none;
+    -webkit-mask-image: none;
+    overflow-x: hidden;
+  }
+  .steps-cards-row {
+    width: 100%;
+    margin-left: 0;
+    justify-content: center;
+  }
+  .step-card {
+    width: 100%;
+    max-width: 340px;
+    height: auto;
+    min-height: 240px;
+  }
+  .step-card-side {
+    display: none; /* Hide side cards on mobile per user request 'no side steps' */
+  }
+  .steps-number-row { 
+    max-width: 100%; 
+    padding: 0 16px; 
+    justify-content: center;
+    display: flex;
+  }
+  .step-num-prev, .step-num-next, .steps-dotted-line {
+    display: none; /* remove side steps and line */
+  }
+  .step-num-active {
+    position: static;
+    transform: none;
+  }
 }

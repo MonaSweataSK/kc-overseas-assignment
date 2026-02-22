@@ -6,12 +6,12 @@ export function Steps() {
   const [current, setCurrent] = useState(0);
   const total = steps.length;
 
-  const prev = () => setCurrent((c) => (c - 1 + total) % total);
-  const next = () => setCurrent((c) => (c + 1) % total);
+  const prev = () => setCurrent((c) => Math.max(0, c - 1));
+  const next = () => setCurrent((c) => Math.min(total - 1, c + 1));
 
-  const prevStep   = steps[(current - 1 + total) % total];
+  const prevStep   = current > 0 ? steps[current - 1] : null;
   const activeStep = steps[current];
-  const nextStep   = steps[(current + 1) % total];
+  const nextStep   = current < total - 1 ? steps[current + 1] : null;
 
   return (
     <section className="steps-section">
@@ -24,23 +24,33 @@ export function Steps() {
 
           {/* Number row: prev ○ ────── ● ────── ○ next */}
           <div className="steps-number-row">
-            <div className="steps-dotted-line" />
-            <div className="step-num step-num-side step-num-prev">{prevStep.number}</div>
+            {prevStep && <div className="steps-dotted-line steps-line-left" />}
+            {nextStep && <div className="steps-dotted-line steps-line-right" />}
+            
+            <div className={`step-num step-num-side step-num-prev ${!prevStep ? 'hidden' : ''}`}>
+              {prevStep?.number}
+            </div>
             <div className="step-num step-num-active">{activeStep.number}</div>
-            <div className="step-num step-num-side step-num-next">{nextStep.number}</div>
+            <div className={`step-num step-num-side step-num-next ${!nextStep ? 'hidden' : ''}`}>
+              {nextStep?.number}
+            </div>
           </div>
 
           {/* Card carousel — active card centred, side cards partially visible */}
           <div className="steps-cards-outer">
             <div className="steps-cards-row">
-              <div className="step-card step-card-side">
-                <div className="step-icon">
-                  {prevStep.icon.startsWith('/') ? (
-                    <img src={prevStep.icon} alt={prevStep.title} className="step-illustration" />
-                  ) : prevStep.icon}
-                </div>
-                <h3 className="step-title">{prevStep.title}</h3>
-                <p className="step-desc">{prevStep.description}</p>
+              <div className={`step-card step-card-side ${!prevStep ? 'hidden' : ''}`}>
+                {prevStep && (
+                  <>
+                    <div className="step-icon">
+                      {prevStep.icon.startsWith('/') ? (
+                        <img src={prevStep.icon} alt={prevStep.title} className="step-illustration" />
+                      ) : prevStep.icon}
+                    </div>
+                    <h3 className="step-title">{prevStep.title}</h3>
+                    <p className="step-desc">{prevStep.description}</p>
+                  </>
+                )}
               </div>
 
               <div className="step-card step-card-active">
@@ -53,27 +63,41 @@ export function Steps() {
                 <p className="step-desc">{activeStep.description}</p>
               </div>
 
-              <div className="step-card step-card-side">
-                <div className="step-icon">
-                  {nextStep.icon.startsWith('/') ? (
-                    <img src={nextStep.icon} alt={nextStep.title} className="step-illustration" />
-                  ) : nextStep.icon}
-                </div>
-                <h3 className="step-title">{nextStep.title}</h3>
-                <p className="step-desc">{nextStep.description}</p>
+              <div className={`step-card step-card-side ${!nextStep ? 'hidden' : ''}`}>
+                {nextStep && (
+                  <>
+                    <div className="step-icon">
+                      {nextStep.icon.startsWith('/') ? (
+                        <img src={nextStep.icon} alt={nextStep.title} className="step-illustration" />
+                      ) : nextStep.icon}
+                    </div>
+                    <h3 className="step-title">{nextStep.title}</h3>
+                    <p className="step-desc">{nextStep.description}</p>
+                  </>
+                )}
               </div>
             </div>
           </div>
 
           {/* Navigation */}
           <div className="steps-controls">
-            <button className="steps-nav-btn" onClick={prev}>
+            <button 
+              className="steps-nav-btn" 
+              onClick={prev} 
+              disabled={current === 0}
+              style={{ opacity: current === 0 ? 0.4 : 1, cursor: current === 0 ? 'default' : 'pointer' }}
+            >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M15 18l-6-6 6-6" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
               Previous Step
             </button>
-            <button className="steps-nav-btn" onClick={next}>
+            <button 
+              className="steps-nav-btn" 
+              onClick={next} 
+              disabled={current === total - 1}
+              style={{ opacity: current === total - 1 ? 0.4 : 1, cursor: current === total - 1 ? 'default' : 'pointer' }}
+            >
               Next Step
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M9 18l6-6-6-6" strokeLinecap="round" strokeLinejoin="round" />

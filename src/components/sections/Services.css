@@ -61,25 +61,13 @@
   margin-top: 32px;
 }
 
-.btn-explore {
-  display: inline-block;
-  padding: 10px 56px;
-  background: linear-gradient(90deg, #FDAF4D 0%, #FF6A56 100%);
-  color: white;
-  font-weight: 600;
-  font-size: 15px;
-  border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(255, 106, 86, 0.3);
-  transition: opacity 0.2s, transform 0.2s;
-  white-space: nowrap;
-}
-.btn-explore:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
-}
-
 @media (max-width: 600px) {
   .services-grid {
     grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .service-label {
+    white-space: normal;
+    text-align: left;
   }
 }

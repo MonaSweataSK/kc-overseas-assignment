@@ -1,17 +1,41 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { testimonials } from '../../data/content';
 import './Testimonials.css';
 
-const CARDS_PER_PAGE = 3;
-const TOTAL_PAGES = 5; // 15 cards ÷ 3
+const CARDS_PER_PAGE_DESKTOP = 3;
+const CARDS_PER_PAGE_MOBILE = 1;
+
+function useWindowSize() {
+  const [windowSize, setWindowSize] = useState({
+    width: typeof window !== 'undefined' ? window.innerWidth : 1200,
+  });
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowSize({ width: window.innerWidth });
+    }
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize);
+      handleResize();
+      return () => window.removeEventListener('resize', handleResize);
+    }
+  }, []);
+
+  return windowSize;
+}
 
 export function Testimonials() {
   const [page, setPage] = useState(0);
+  const { width } = useWindowSize();
 
-  const prev = () => setPage((p) => (p - 1 + TOTAL_PAGES) % TOTAL_PAGES);
-  const next = () => setPage((p) => (p + 1) % TOTAL_PAGES);
+  const isMobile = width <= 768;
+  const cardsPerPage = isMobile ? CARDS_PER_PAGE_MOBILE : CARDS_PER_PAGE_DESKTOP;
+  const totalPages = Math.ceil(testimonials.length / cardsPerPage);
 
-  const visible = testimonials.slice(page * CARDS_PER_PAGE, page * CARDS_PER_PAGE + CARDS_PER_PAGE);
+  const prev = () => setPage((p) => (p - 1 + totalPages) % totalPages);
+  const next = () => setPage((p) => (p + 1) % totalPages);
+
+  const visible = testimonials.slice(page * cardsPerPage, page * cardsPerPage + cardsPerPage);
 
   return (
     <section className="testimonials-section">
@@ -47,9 +71,9 @@ export function Testimonials() {
           </button>
         </div>
 
-        {/* 5 dots — one per page */}
+        {/* Dots — one per page */}
         <div className="testi-dots">
-          {Array.from({ length: TOTAL_PAGES }).map((_, i) => (
+          {Array.from({ length: totalPages }).map((_, i) => (
             <button
               key={i}
               className={`testi-dot ${i === page ? 'active' : ''}`}
