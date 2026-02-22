@@ -1,0 +1,119 @@
+.kc-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: transparent;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  padding-top: 10px;
+}
+
+/* Solid background after scroll */
+.kc-header--scrolled {
+  background: rgba(50, 22, 130, 0.96);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  padding: 0 40px;
+  gap: 32px;
+}
+
+.header-logo img {
+  height: 40px;
+  width: auto;
+}
+
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-left: auto;
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+.nav-link:hover {
+  color: #fff;
+}
+
+/* Course Finder CTA button */
+.nav-cta-btn {
+  display: inline-block;
+  padding: 8px 20px;
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
+  border-radius: 6px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s;
+  flex-shrink: 0;
+}
+.nav-cta-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.hamburger-btn {
+  display: none;
+  padding: 8px;
+  background: transparent;
+}
+.hamburger-btn img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+}
+
+/* Mobile Menu */
+.mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 200;
+}
+.mobile-menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 280px;
+  height: 100%;
+  background: #4527A0;
+  padding: 70px 24px 24px;
+}
+.mobile-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: white;
+  font-size: 20px;
+  background: transparent;
+}
+.mobile-nav-link {
+  display: block;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  transition: opacity 0.2s;
+}
+.mobile-nav-link:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .desktop-nav { display: none; }
+  .hamburger-btn { display: flex; }
+}

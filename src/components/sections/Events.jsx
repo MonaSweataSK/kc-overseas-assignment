@@ -1,43 +1,65 @@
-import { SectionTitle } from '../ui/SectionTitle';
-import { Carousel } from '../ui/Carousel';
-import { Card } from '../ui/Card';
 import { events } from '../../data/content';
+import './Events.css';
 
 export function Events() {
+  const featured = events[0];          // city1 — large left card
+  const secondary = events.slice(1, 3); // city2 & city3 — small right stack
+
   return (
-    <section className="py-16 md:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionTitle className="mb-12">Webinars & Events</SectionTitle>
-        <Carousel>
-          {events.map((event, i) => (
-            <Card key={i} className="max-w-sm mx-auto overflow-hidden p-0" hover>
-              <img
-                src={event.image}
-                alt={event.title}
-                className="w-full h-40 object-cover"
-              />
-              <div className="p-6">
-                <p className="text-orange-500 text-sm font-medium mb-1">
-                  {event.date} / {event.time}
-                </p>
-                <h3 className="font-bold text-lg text-gray-800 mb-2">{event.title}</h3>
-                <p className="text-gray-600 text-sm mb-4">{event.description}</p>
-                <a
-                  href={event.link}
-                  className="text-orange-500 font-medium text-sm hover:text-orange-600"
-                >
-                  Register Now →
-                </a>
+    <section className="events-section">
+      <div className="container">
+        <h2 className="section-title events-title">Webinars &amp; Events</h2>
+
+        <div className="events-grid">
+
+          {/* ── Large featured card ── */}
+          <div className="event-card event-card-featured">
+            <div className="event-featured-image-wrap">
+              <img src={featured.image} alt={featured.title} className="event-image" />
+            </div>
+            <div className="event-body">
+              <p className="event-date">{featured.date} · {featured.time}</p>
+              <h3 className="event-name">{featured.title}</h3>
+              <p className="event-desc">{featured.description}</p>
+              <a href={featured.link} className="event-link">
+                Register Now
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M9 18l6-6-6-6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          {/* ── Two small stacked cards ── */}
+          <div className="events-right-col">
+            {secondary.map((event, i) => (
+              <div key={i} className="event-card event-card-small">
+                <div className="event-small-image-wrap">
+                  <img src={event.image} alt={event.title} className="event-image" />
+                </div>
+                <div className="event-body">
+                  <p className="event-date">{event.date} · {event.time}</p>
+                  <h3 className="event-name">{event.title}</h3>
+                  <p className="event-desc">{event.description}</p>
+                  <a href={event.link} className="event-link">
+                    Register Now
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <path d="M9 18l6-6-6-6" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </a>
+                </div>
               </div>
-            </Card>
-          ))}
-        </Carousel>
-        <div className="text-center mt-8">
-          <a
-            href="#"
-            className="inline-flex px-6 py-3 rounded-xl bg-gradient-to-r from-orange-500 to-red-500 text-white font-medium hover:opacity-90"
-          >
-            View More
+            ))}
+          </div>
+
+        </div>
+
+        <div className="events-cta">
+          <a href="#" className="event-link events-see-more">
+            See More
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <path d="M9 18l6-6-6-6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </a>
         </div>
       </div>

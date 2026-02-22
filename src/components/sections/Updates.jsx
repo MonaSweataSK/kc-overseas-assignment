@@ -1,63 +1,53 @@
-import { SectionTitle } from '../ui/SectionTitle';
-import { Card } from '../ui/Card';
 import { updates } from '../../data/content';
+import './Updates.css';
 
 export function Updates() {
   return (
-    <section className="py-16 md:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionTitle className="mb-12">Latest KC Updates</SectionTitle>
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-          {updates.map((update, i) => (
-            <div key={i}>
-              {update.type === 'hiring' ? (
-                <div className="h-full rounded-2xl bg-gradient-to-r from-orange-500 to-red-500 p-8 text-white shadow-lg relative overflow-hidden">
-                  <div
-                    className="absolute inset-0 opacity-20"
-                    style={{
-                      backgroundImage: `radial-gradient(circle, white 1px, transparent 1px)`,
-                      backgroundSize: '20px 20px',
-                    }}
-                  />
-                  <div className="relative">
-                    <h3 className="text-2xl font-bold mb-4">{update.title}</h3>
-                    <p className="mb-6 opacity-90">{update.description}</p>
-                    <a
-                      href={update.ctaLink}
-                      className="inline-block px-6 py-3 rounded-xl bg-white text-orange-500 font-medium hover:bg-gray-100 transition"
-                    >
-                      {update.cta}
-                    </a>
+    <section className="updates-section">
+      <div className="container">
+        <h2 className="section-title updates-title">Latest KC Updates</h2>
+        <div className="updates-grid">
+          {updates.map((update, i) => {
+            if (update.type === 'hiring') {
+              return (
+                <div key={i} className="update-card update-hiring">
+                  {/* decorative arcs */}
+                  <div className="hiring-arcs" aria-hidden="true">
+                    <span className="arc arc-1" />
+                    <span className="arc arc-2" />
+                  </div>
+                  <div className="hiring-content">
+                    <h3 className="hiring-title">{update.title}</h3>
+                    <p className="hiring-desc">{update.description}</p>
+                    <a href={update.ctaHref} className="hiring-btn">{update.cta}</a>
                   </div>
                 </div>
-              ) : (
-                <Card hover className="h-full">
-                  <div className="text-center">
-                    <img
-                      src={update.logo}
-                      alt={update.title}
-                      className="h-16 w-auto mx-auto mb-4 object-contain"
-                    />
-                    <h3 className="font-bold text-lg text-gray-800 mb-2">{update.title}</h3>
-                    <p className="text-gray-500 text-sm mb-4">{update.date}</p>
-                    <a
-                      href={update.link}
-                      className="text-orange-500 font-medium text-sm hover:text-orange-600"
-                    >
-                      Read More →
-                    </a>
-                  </div>
-                </Card>
-              )}
-            </div>
-          ))}
+              );
+            }
+
+            return (
+              <div key={i} className="update-card update-partner">
+                <div className="partner-logo-wrap">
+                  <img src={update.logo} alt={update.org} className="partner-logo" />
+                </div>
+                <p className="partner-org">{update.org}</p>
+                {/* decorative star dots */}
+                <div className="partner-stars" aria-hidden="true">
+                  <span>✦</span><span>✦</span><span>✦</span>
+                </div>
+                <a href={update.link} className="partner-title">{update.title}</a>
+                <p className="partner-date">{update.date}</p>
+              </div>
+            );
+          })}
         </div>
-        <div className="text-center mt-8">
-          <a
-            href="#"
-            className="inline-flex px-6 py-3 rounded-xl bg-gradient-to-r from-orange-500 to-red-500 text-white font-medium hover:opacity-90"
-          >
-            View More Updates
+
+        <div className="updates-cta">
+          <a href="#" className="updates-more-link">
+            More News
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <path d="M9 18l6-6-6-6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </a>
         </div>
       </div>

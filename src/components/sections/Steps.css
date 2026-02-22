@@ -1,0 +1,212 @@
+.steps-section {
+  background: #EEE9FF;
+  padding: 72px 0;
+  position: relative;
+}
+
+.steps-title {
+  text-align: center;
+  margin-bottom: 48px;
+  font-size: 26px;
+}
+
+/* ── Number row ─────────────────────────────────── */
+/*
+  3-card row total = 3×440 + 2×20 = 1360px
+  Card centres: left=220px, middle=680px, right=1140px from row start
+  When row is centred in a container W:
+    Left circle centre  = calc(50% - 460px)
+    Active circle centre = 50%
+    Right circle centre = calc(50% + 460px)
+*/
+.steps-number-row {
+  position: relative;
+  width: 100%;
+  max-width: 1360px;
+  height: 52px;
+  margin: 0 auto 20px;
+}
+
+.steps-dotted-line {
+  position: absolute;
+  top: 50%;
+  left: calc(50% - 434px);   /* right edge of prev circle (centre -460 + radius 26) */
+  right: calc(50% - 434px);  /* left edge of next circle  (centre +460 - radius 26) */
+  border-top: 2px dotted #bbb;
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+.step-num {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+.step-num-active {
+  background: white;
+  color: var(--text-dark);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.14);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.step-num-side {
+  background: #EEE9FF;   /* matches section bg — masks the dotted line */
+  color: #aaa;
+  border: 2px solid #ccc;
+}
+
+.step-num-prev {
+  left: calc(50% - 460px);
+  transform: translateX(-50%);
+}
+.step-num-next {
+  left: calc(50% + 460px);
+  transform: translateX(-50%);
+}
+
+/* ── Card carousel ──────────────────────────────── */
+/*
+  All 3 cards (440px each) shown centred.
+  Container fades left/right edges with a gradient mask so
+  the side cards appear to dissolve rather than hard-clip.
+  Total row = 3x440 + 2x20 = 1360px.
+*/
+.steps-cards-outer {
+  width: 100%;
+  overflow: visible;
+  padding-top: 24px;   /* room for the 20px triangle */
+  /* Gradient mask: transparent at edges, fully opaque in centre */
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 18%,
+    black 82%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 18%,
+    black 82%,
+    transparent 100%
+  );
+}
+
+.steps-cards-row {
+  display: flex;
+  gap: 20px;
+  width: 1360px;  /* 3×440 + 2×20 */
+  /* centres the row when it overflows the container:
+     50% of container − half of 1360px (680px) */
+  margin-left: calc(50% - 680px);
+}
+
+/* Active card — full, prominent */
+.step-card {
+  flex-shrink: 0;
+  background: white;
+  border-radius: 20px;
+  padding: 36px 24px 28px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.07);
+  text-align: center;
+  width: 440px;
+  height: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: visible;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+/* Tooltip triangle at top-center of every card */
+.step-card::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 20px solid white;
+  z-index: 1;
+}
+
+/* Side cards — dimmed */
+.step-card-side {
+  opacity: 0.45;
+  transform: scale(0.97);
+}
+
+.step-icon {
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+}
+
+.step-illustration {
+  width: 100px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.step-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.step-desc {
+  font-size: 14px;
+  color: var(--text-gray);
+  line-height: 1.6;
+}
+
+/* ── Navigation ─────────────────────────────────── */
+.steps-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 32px;
+}
+
+.steps-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #FF7361;
+  transition: opacity 0.2s;
+}
+.steps-nav-btn svg { stroke: #FF7361; flex-shrink: 0; }
+.steps-nav-btn:hover { opacity: 0.75; }
+
+/* ── Responsive ──────────────────────────────────── */
+@media (max-width: 780px) {
+  .steps-cards-outer { max-width: 100%; }
+  .steps-number-row { max-width: 100%; padding: 0 16px; }
+  .step-num-prev { left: 16px; }
+  .step-num-next { right: 16px; }
+  .steps-dotted-line { left: 42px; right: 42px; }
+}

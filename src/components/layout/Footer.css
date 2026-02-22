@@ -1,0 +1,183 @@
+.footer-section {
+  position: relative;
+  /* Total visual height from peak of dome to bottom of body = 346px */
+  height: 346px;
+  width: 100%;
+  margin-top: 50px; /* Gap from section above */
+  overflow: visible; /* Allow streak to overshoot top */
+  /* Clip bottom but allow top overflow (up to 500px) */
+  clip-path: polygon(0% -500px, 100% -500px, 100% 100%, 0% 100%);
+  background: transparent;
+}
+
+
+/* 
+   Wrapper to contain the large ellipse overshoot WITHOUT 
+   restricting the decorative streaks or other floating elements.
+*/
+.footer-arc-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* 
+   The CSS-based Convex Arc (Dome) 
+   Using exact Figma dimensions: 2660px x 660px ellipse.
+*/
+.footer-arc-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2660px; /* Exact Figma width */
+  height: 660px; /* Exact Figma height */
+  background: #0E1B2C;
+  border-radius: 50%; /* Perfect ellipse */
+  z-index: 1;
+}
+
+.footer-streak {
+  position: absolute;
+  left: 266px; /* Positioned relative to screen/section */
+  top: -226px; /* Positioned above the section boundary */
+  z-index: 2;
+  pointer-events: none;
+}
+.footer-streak img {
+  height: 120px;
+  transform: rotate(-10deg) scale(1.5);
+}
+
+.footer-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 24px 0; /* padding-top pushes content below the dome peak area */
+  box-sizing: border-box;
+  pointer-events: auto; /* Ensure form is interactive */
+}
+
+.footer-title {
+  font-size: 36px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 30px;
+}
+
+.footer-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 900px;
+  position: relative; /* Context for nested streak */
+}
+
+.footer-inputs {
+  display: flex;
+  gap: 16px;
+}
+
+.footer-input,
+.footer-select {
+  height: 52px;
+  padding: 0 24px;
+  border-radius: 8px;
+  border: none;
+  background: white;
+  font-size: 15px;
+  color: #0E1B2C;
+  outline: none;
+  width: 280px;
+}
+
+.footer-select-wrap {
+  position: relative;
+}
+.footer-select {
+  width: 240px;
+  appearance: none;
+  cursor: pointer;
+  padding-right: 48px;
+}
+.select-chevron {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  pointer-events: none;
+  filter: brightness(0);
+  opacity: 0.6;
+}
+
+.footer-subscribe-btn {
+  width: 150px;
+  height: 48px;
+  background: linear-gradient(90deg, #FDAF4D 0%, #FF6A56 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  box-shadow: 0 8px 30px rgba(10, 2, 23, 0.2);
+}
+.footer-subscribe-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 991px) {
+  .footer-section {
+    height: auto;
+    min-height: 400px;
+    overflow: visible;
+  }
+  .footer-section::before {
+    top: -50px;
+    height: 100px;
+    width: 200%;
+    left: -50%;
+    transform: none;
+    border-radius: 50% 50% 0 0;
+  }
+  .footer-content {
+    padding: 80px 24px 40px;
+  }
+  .footer-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  .footer-form {
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  .footer-inputs {
+    flex-direction: column;
+    width: 100%;
+  }
+  .footer-input,
+  .footer-select {
+    width: 100%;
+  }
+  .footer-subscribe-btn {
+    width: 100%;
+  }
+}

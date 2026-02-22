@@ -1,0 +1,91 @@
+.ambitions-section {
+  padding: 72px 0;
+  background: white;
+}
+
+.ambitions-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+/* Image with peach background decoration */
+.ambitions-image-wrap {
+  position: relative;
+  /* Extra space so the bg peeking out top-left is visible */
+  padding: 40px 0 0 40px;
+  width: fit-content;
+}
+
+.ambitions-image-bg {
+  position: absolute;
+  top: 0;        /* sits 40px above image (image starts at padding-top: 40px) */
+  left: 0;       /* sits 40px left of image (image starts at padding-left: 40px) */
+  width: 450px;
+  height: 400px;
+  background: #FDEBD0;
+  border-radius: 20px;
+  z-index: 0;
+}
+
+.ambitions-image {
+  position: relative;
+  z-index: 1;
+  width: 450px;
+  height: 400px;
+  border-radius: 16px;
+  object-fit: cover;
+  display: block;
+}
+
+.ambitions-heading {
+  font-size: 26px;
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+
+.ambitions-description {
+  color: var(--text-gray);
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+.ambitions-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.ambitions-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 15px;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+.ambitions-star {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #F5A623;
+  line-height: 1;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 900px) {
+  .ambitions-inner {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .ambitions-image-wrap { order: -1; }
+}

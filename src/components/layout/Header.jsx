@@ -1,32 +1,63 @@
-import { useState } from 'react';
-import { Navigation } from './Navigation';
-import { MobileMenu } from './MobileMenu';
+import { useState, useEffect } from 'react';
+import { navLinks } from '../../data/content';
+import './Header.css';
 
 export function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
-    <>
-      <header className="fixed top-0 left-0 right-0 z-40 bg-hero-bg/95 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 md:h-20">
-            <a href="#" className="flex items-center">
-              <img src="/assets/logo.svg" alt="KC Overseas Education" className="h-8 md:h-10" />
+    <header className={`kc-header${scrolled ? ' kc-header--scrolled' : ''}`}>
+      <div className="container header-inner">
+        <a href="#" className="header-logo">
+          <img src="/assets/logo.svg" alt="KC Overseas Education" />
+        </a>
+
+        <nav className="header-nav desktop-nav">
+          {navLinks.map((link) => (
+            <a key={link.label} href={link.href} className="nav-link">
+              {link.label}
             </a>
-            <div className="hidden md:flex items-center gap-8">
-              <Navigation />
-            </div>
-            <button
-              onClick={() => setIsMenuOpen(true)}
-              className="md:hidden p-2 text-white hover:bg-white/10 rounded-lg"
-              aria-label="Open menu"
-            >
-              <img src="/assets/logos/hamburger.svg" alt="" className="w-6 h-6" />
-            </button>
+          ))}
+        </nav>
+
+        <a href="#" className="nav-cta-btn">Course Finder</a>
+
+        <button
+          className="hamburger-btn"
+          onClick={() => setMobileOpen(true)}
+          aria-label="Open menu"
+        >
+          <img src="/assets/logos/hamburger.svg" alt="Menu" />
+        </button>
+      </div>
+
+      {mobileOpen && (
+        <div className="mobile-overlay" onClick={() => setMobileOpen(false)}>
+          <div className="mobile-menu" onClick={(e) => e.stopPropagation()}>
+            <button className="mobile-close" onClick={() => setMobileOpen(false)}>✕</button>
+            <nav>
+              {navLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="mobile-nav-link"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {link.label}
+                </a>
+              ))}
+              <a href="#" className="mobile-nav-link mobile-cta">Course Finder</a>
+            </nav>
           </div>
         </div>
-      </header>
-      <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
-    </>
+      )}
+    </header>
   );
 }

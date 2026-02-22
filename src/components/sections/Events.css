@@ -1,0 +1,160 @@
+.events-section {
+  padding: 72px 0;
+  background: white;
+}
+
+.events-title {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 26px;
+}
+
+/* ── Outer grid: large left | stacked right ── */
+.events-grid {
+  display: grid;
+  grid-template-columns: 570px 570px;
+  gap: 20px;
+  align-items: stretch;
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+/* ── Shared card base ── */
+.event-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.event-card:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.13);
+  transform: translateY(-3px);
+}
+
+/* ── Featured (large) card ── */
+.event-card-featured {
+  display: flex;
+  flex-direction: column;
+  width: 570px;
+  height: 530px;
+}
+
+.event-featured-image-wrap {
+  flex: 1;           /* fills remaining height after body */
+  overflow: hidden;
+}
+.event-featured-image-wrap .event-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+  display: block;
+}
+.event-card-featured:hover .event-image {
+  transform: scale(1.04);
+}
+
+/* ── Right column: two stacked small cards ── */
+.events-right-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Small card: image left, text right ── */
+.event-card-small {
+  display: flex;
+  flex-direction: row;
+  width: 570px;
+  height: 250px;
+}
+
+.event-small-image-wrap {
+  width: 160px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.event-small-image-wrap .event-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+  display: block;
+}
+.event-card-small:hover .event-image {
+  transform: scale(1.04);
+}
+
+/* ── Card body (shared) ── */
+.event-body {
+  padding: 18px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.event-date {
+  font-size: 12px;
+  font-weight: 400;
+  margin-bottom: 6px;
+  letter-spacing: 0.02em;
+}
+
+/* Featured card — blue date */
+.event-card-featured .event-date {
+  color: #226CF5;
+}
+
+/* Small cards — blue date */
+.event-card-small .event-date {
+  color: #226CF5;
+}
+
+.event-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.event-desc {
+  font-size: 13px;
+  color: var(--text-gray);
+  line-height: 1.6;
+  margin-bottom: 14px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.event-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #E85F2A;
+  font-size: 13px;
+  font-weight: 600;
+  transition: gap 0.2s;
+}
+.event-link:hover { gap: 8px; }
+
+/* ── See More CTA ── */
+.events-cta {
+  text-align: center;
+  margin-top: 32px;
+}
+.events-see-more {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .events-grid { grid-template-columns: 1fr; }
+  .event-card-small { flex-direction: column; }
+  .event-small-image-wrap { width: 100%; height: 160px; }
+}

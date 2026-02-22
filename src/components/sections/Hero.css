@@ -1,0 +1,177 @@
+.hero-section {
+  position: relative;
+  background: #6C48F0;
+  padding: 140px 0 80px;
+  overflow: hidden;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+}
+
+/* Convex curve — sits below the hero section */
+.hero-curve-bottom {
+  position: relative;
+  height: 90px;
+  background: #fff;
+  z-index: 1;
+}
+.hero-curve-bottom::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -5%;
+  width: 110%;
+  height: 100%;
+  background: #6C48F0;
+  border-radius: 0 0 50% 50% / 0 0 100% 100%;
+}
+
+/* Ellipse background decorations */
+.hero-ellipse {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.55;
+}
+.hero-ellipse-left {
+  left: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 260px;
+}
+.hero-ellipse-right {
+  right: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 260px;
+}
+
+/* Stars overlay — centered */
+.hero-stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-stars-svg {
+  width: 60%;
+  max-width: 640px;
+  height: auto;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.hero-content {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-breadcrumb {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-align: center;
+  margin-bottom: 14px;
+}
+.hero-breadcrumb-h5 {
+  display: inline-block;
+  font-size: 14px; /* Heading 5 in this context is slightly larger than breadcrumb base */
+  font-weight: 500;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+.hero-title {
+  color: #ffffff;
+  font-size: 42px;
+  font-weight: 600;
+  line-height: 1.2;
+  width: 700px;
+  height: 106px;
+  margin: 0 auto 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-description {
+  color: rgba(255,255,255,0.85);
+  font-size: 15px;
+  line-height: 1.6;
+  width: 700px;
+  height: 78px;
+  margin: 0 auto 36px;
+  text-align: center;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.hero-btn-enquire {
+  display: inline-block;
+  padding: 14px 36px;
+  background: linear-gradient(90deg, #FDAF4D 0%, #FF6A56 100%);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 10px;
+  box-shadow: 0 6px 24px rgba(255, 106, 86, 0.35);
+  transition: opacity 0.2s, transform 0.2s;
+  white-space: nowrap;
+}
+.hero-btn-enquire:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.hero-btn-address {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+.hero-btn-address:hover { opacity: 0.8; }
+
+.address-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  background: #fff;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.hero-wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  line-height: 0;
+}
+.hero-wave svg {
+  display: block;
+  width: 100%;
+  height: 80px;
+}
+
+@media (max-width: 768px) {
+  .hero-section { padding: 110px 0 80px; }
+  .hero-title { font-size: 28px; }
+}
