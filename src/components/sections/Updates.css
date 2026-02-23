@@ -126,7 +126,7 @@
   margin-bottom: 24px;
   line-height: 140%;
   text-align: center;
-  height: 52px;       /* Fixed height for 2 lines of text */
+  height: 80px;       /* Fixed height for up to 3 lines of text */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -204,11 +204,22 @@
   }
 
   .update-card {
-    width: 90%;
+    width: 280px;
     flex-shrink: 0;
     scroll-snap-align: center;
     height: auto;
     min-height: 400px;
+  }
+  .update-partner {
+    padding: 40px 20px 32px;
+  }
+  .partner-title {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  .partner-org {
+    height: 70px;
+    font-size: 16px;
   }
   
   .update-hiring {
