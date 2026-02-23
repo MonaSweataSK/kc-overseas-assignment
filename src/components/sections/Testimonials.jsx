@@ -30,12 +30,15 @@ export function Testimonials() {
 
   const isMobile = width <= 768;
   const cardsPerPage = isMobile ? CARDS_PER_PAGE_MOBILE : CARDS_PER_PAGE_DESKTOP;
-  const totalPages = Math.ceil(testimonials.length / cardsPerPage);
+  
+  // Limit to 5 testimonials on mobile, otherwise use all
+  const data = isMobile ? testimonials.slice(0, 5) : testimonials;
+  const totalPages = Math.ceil(data.length / cardsPerPage);
 
   const prev = () => setPage((p) => (p - 1 + totalPages) % totalPages);
   const next = () => setPage((p) => (p + 1) % totalPages);
 
-  const visible = testimonials.slice(page * cardsPerPage, page * cardsPerPage + cardsPerPage);
+  const visible = data.slice(page * cardsPerPage, page * cardsPerPage + cardsPerPage);
 
   return (
     <section className="testimonials-section">

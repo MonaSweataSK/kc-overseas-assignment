@@ -4,9 +4,14 @@
 }
 
 .services-title {
+  font-family: 'Buenos Aires', sans-serif;
+  font-weight: 600;
+  font-size: 42px;
+  line-height: 120%;
+  letter-spacing: 0%;
   text-align: center;
-  margin-bottom: 40px;
-  font-size: 26px;
+  margin-bottom: 48px;
+  color: #0E1B2C;
 }
 
 .services-grid {
@@ -20,14 +25,17 @@
 .service-card {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
   background: white;
   border: 1px solid #F0F0F0;
   border-radius: 10px;
-  padding: 16px 20px;
+  padding: 0 24px;
+  width: 500px;
+  height: 80px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.06);
   transition: all 0.2s;
   cursor: default;
+  margin: 0 auto;
 }
 .service-card:hover {
   box-shadow: 0 6px 20px rgba(0,0,0,0.1);
@@ -49,10 +57,12 @@
 }
 
 .service-label {
+  font-family: 'Buenos Aires', sans-serif;
   font-size: 18px;
   font-weight: 600;
-  color: var(--text-dark);
-  line-height: 1.4;
+  color: #0E1B2C;
+  line-height: 140%;
+  letter-spacing: 0%;
   white-space: nowrap;
 }
 

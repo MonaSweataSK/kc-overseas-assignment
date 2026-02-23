@@ -29,26 +29,20 @@
   align-items: flex-start;  /* content sits at top, matching Figma */
 }
 
-/* Decorative concentric arcs (pure CSS) */
-.hiring-arcs {
+/* Decorative spirals SVG */
+.hiring-spirals {
   position: absolute;
-  bottom: -40px;
-  right: -40px;
-  width: 220px;
-  height: 220px;
+  bottom: 0;
+  right: 0;
+  width: 416px;
+  height: 340px;
   pointer-events: none;
+  z-index: 1;
 }
-.arc {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  border: 40px solid rgba(255, 255, 255, 0.15);
-}
-.arc-1 {
-  inset: 0;
-}
-.arc-2 {
-  inset: 40px;
+.hiring-spirals img {
+  width: 100%;
+  height: 100%;
+  transform: translate(15%, 15%); /* Slight push to match Figma offset */
 }
 
 .hiring-content {
@@ -125,41 +119,54 @@
 }
 
 .partner-org {
-  font-size: 16px;
+  font-family: 'Buenos Aires', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
   color: #374151;
-  font-weight: 500;
-  margin-bottom: 32px;
-  line-height: 1.4;
+  margin-bottom: 24px;
+  line-height: 140%;
+  text-align: center;
+  height: 52px;       /* Fixed height for 2 lines of text */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Star / plus decorators */
+/* Star group decorator */
 .partner-stars {
   display: flex;
-  gap: 8px;
-  color: #ccc;
-  font-size: 12px;
-  letter-spacing: 4px;
-  margin-bottom: 0;
-  align-items: center;
+  justify-content: center;
+  margin-bottom: 32px;   /* Increased gap to title for cleaner look */
+  height: 20px;          /* Stabilize star row height */
+  opacity: 1;
 }
-/* Middle star slightly larger */
-.partner-stars span:nth-child(2) {
-  font-size: 16px;
+.partner-stars img {
+  width: 70px;
+  height: 20px;
 }
 
 .partner-title {
-  font-size: 20px;
-  font-weight: 600;
+  font-family: 'Buenos Aires', sans-serif;
+  font-size: 22px;
+  font-weight: 400;
   color: #226CF5;
   text-decoration: none;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  line-height: 150%;
+  letter-spacing: 0%;
+  text-align: center;
   transition: opacity 0.2s;
 }
 .partner-title:hover { opacity: 0.75; }
 
 .partner-date {
-  font-size: 14px;
+  font-family: 'Buenos Aires', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
   color: #9CA3AF;
+  line-height: 150%;
+  letter-spacing: 0%;
+  text-align: center;
 }
 
 /* ── More News CTA ── */

@@ -51,35 +51,41 @@
 .testi-quote-icon {
   margin-bottom: 14px;
 }
-.testi-quote-icon img {
-  opacity: 0.7;
-}
 
 .testi-text {
   flex: 1;
-  font-size: 14px;
+  font-family: 'Buenos Aires', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
   color: #374151;
-  line-height: 1.7;
+  line-height: 160%;
   margin-bottom: 20px;
   display: -webkit-box;
   -webkit-line-clamp: 5;
   line-clamp: 5;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  vertical-align: middle;
 }
 
 .testi-author {
   margin-top: auto;
 }
 .testi-name {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--text-dark);
+  font-family: 'Buenos Aires', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #0E1B2C;
+  line-height: 100%;
 }
 .testi-detail {
-  font-size: 13px;
+  font-family: 'Buenos Aires', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
   color: var(--text-gray);
-  margin-top: 2px;
+  margin-top: 4px;
+  line-height: 150%;
+  vertical-align: middle;
 }
 
 /* ── Arrow buttons ── */

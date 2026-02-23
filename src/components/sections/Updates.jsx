@@ -11,10 +11,9 @@ export function Updates() {
             if (update.type === 'hiring') {
               return (
                 <div key={i} className="update-card update-hiring">
-                  {/* decorative arcs */}
-                  <div className="hiring-arcs" aria-hidden="true">
-                    <span className="arc arc-1" />
-                    <span className="arc arc-2" />
+                  {/* decorative spirals */}
+                  <div className="hiring-spirals" aria-hidden="true">
+                    <img src="/assets/spirals.svg" alt="" />
                   </div>
                   <div className="hiring-content">
                     <h3 className="hiring-title">{update.title}</h3>
@@ -31,9 +30,9 @@ export function Updates() {
                   <img src={update.logo} alt={update.org} className="partner-logo" />
                 </div>
                 <p className="partner-org">{update.org}</p>
-                {/* decorative star dots */}
+                {/* decorative star group */}
                 <div className="partner-stars" aria-hidden="true">
-                  <span>✦</span><span>✦</span><span>✦</span>
+                  <img src="/assets/update_star_group.svg" alt="" />
                 </div>
                 <a href={update.link} className="partner-title">{update.title}</a>
                 <p className="partner-date">{update.date}</p>

@@ -13,7 +13,7 @@ export function Header() {
   }, []);
 
   return (
-    <header className={`kc-header${scrolled ? ' kc-header--scrolled' : ''}`}>
+    <header className={`kc-header${scrolled ? ' kc-header--scrolled' : ''}${mobileOpen ? ' kc-header--open' : ''}`}>
       <div className="container header-inner">
         <a href="#" className="header-logo">
           <img src="/assets/logo.svg" alt="KC Overseas Education" />
@@ -53,8 +53,7 @@ export function Header() {
                   {link.label}
                 </a>
               ))}
-              <a href="#" className="mobile-nav-link mobile-cta">Course Finder</a>
-            </nav>
+              </nav>
           </div>
         </div>
       )}
